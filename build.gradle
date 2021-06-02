@@ -1,0 +1,59 @@
+buildscript {
+    repositories {
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/"  }
+        maven { url "http://maven.aliyun.com/nexus/content/repositories/releases/"  }
+//        jcenter()
+        maven { url "https://repo1.maven.org/maven2/"  }
+        maven { url "https://jitpack.io"  }
+        mavenLocal()
+        google()
+        maven {
+            url "https://jitpack.io"
+        }
+//        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
+        classpath "com.github.dcendents:android-maven-gradle-plugin:1.5"
+    }
+}
+
+allprojects {
+    repositories {
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/"  }
+        maven { url "http://maven.aliyun.com/nexus/content/repositories/releases/"  }
+//        jcenter()
+        maven { url "https://repo1.maven.org/maven2/"  }
+        maven { url "https://jitpack.io"  }
+        mavenLocal()
+        google()
+//        jcenter()
+        maven {
+            url "https://jitpack.io"
+        }
+        maven {
+            url "http://dl.bintray.com/tencent-soter/maven/"
+        }
+    }
+
+    tasks.withType(Javadoc).all {
+        enabled = false
+        options.setEncoding('UTF-8')
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    minSdkVersion = 16
+    targetSdkVersion = 23
+    compileSdkVersion = 24
+    buildToolsVersion = '25.0.0'
+
+    javaVersion = JavaVersion.VERSION_1_7
+}
+
+
